@@ -1,0 +1,225 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <title>Network | Manipulation</title>
+
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+    crossorigin="anonymous"></script>
+
+  <script type="text/javascript" src="js/data.js"></script>
+  <script type="text/javascript" src="js/script.js"></script>
+  <script type="text/javascript" src="js/vis.js"></script>
+  <script type="text/javascript" src="js/imagePicker.js"></script>
+  <link href="css/style.css" rel="stylesheet" type="text/css" />
+  <link href="css/vis.css" rel="stylesheet" type="text/css" />
+  <link href="css/imagePicker.css" rel="stylesheet" type="text/css" />
+  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+
+</head>
+
+<body onload="init();">
+  <img src="assets\SimTree.png" style="height: 120px; margin-left: auto;margin-right: auto;display: block;">
+  <div id="search">
+    <span class="searchHeading">Search</span><br>
+    <form action="javascript:searchData();">
+      <input id="node-searchData" type="search" list="searchTraits" value="" placeholder="Sim Name or Trait" />
+        <datalist id="searchTraits">
+          <option value="Active">
+          <option value="Alluring">
+          <option value="Ambitious">
+          <option value="Art Lover">
+          <option value="Bookworm">
+          <option value="Bro">
+          <option value="Business Savvy">
+          <option value="Cheerful">
+          <option value="Childish">
+          <option value="Clumsy">
+          <option value="Collector">
+          <option value="Creative">
+          <option value="Dastardly">
+          <option value="Domestic">
+          <option value="Essence of Flavor">
+          <option value="Evil">
+          <option value="Family-Oriented">
+          <option value="Foodie">
+          <option value="Geek">
+          <option value="Genius">
+          <option value="Gloomy">
+          <option value="Glutton">
+          <option value="Goofball">
+          <option value="Gregarious">
+          <option value="Hates Children">
+          <option value="High Metabolism">
+          <option value="Hot-Headed">
+          <option value="Insane">
+          <option value="Lazy">
+          <option value="Loner">
+          <option value="Loves Outdoors">
+          <option value="Materialistic">
+          <option value="Mean">
+          <option value="Muser">
+          <option value="Music Lover">
+          <option value="Neat">
+          <option value="Noncommittal">
+          <option value="Outgoing">
+          <option value="Perfectionist">
+          <option value="Quick Learner">
+          <option value="Romantic">
+          <option value="Self-Assured">
+          <option value="Snob">          
+          <option value="Squeamish">                      
+        </datalist>
+    </form><br>
+    <ul id="results"></ul>
+  </div>
+  <div class="sidebar">
+    
+    <div id="network-popUp">
+      <span id="operation">Add Sim</span> <br>
+
+      <input id="node-id" value="Id" style="display: none;" /><br>
+      <input id="node-label" value="Name" /><br>
+      <input id="node-family" value="Family" /><br><br>
+
+      <input id="node-male" type="radio" name="gender" value="m">M</input>
+      <input id="node-female" type="radio" name="gender" value="f">F</input>
+      <input id="node-dead" type="radio" name="gender" value="d">Dead</input><br>
+
+      <input id="node-title" value="Details" style="display: none;" /><br>
+
+      <div><h3 class="selectors">Aspirations</h3>
+        <select id="aspiration" class="image-picker show-html" show-labels >
+          <option value=""></option>
+          <option data-img-src="assets\Sims 4 Icons\Aspirations\Bodybuilder.png" value="assets\Sims 4 Icons\Aspirations\Bodybuilder.png">Bodybuilder</option>
+
+          <option data-img-src="assets\Sims 4 Icons\Aspirations\Painter Extraordinaire.png" value="assets\Sims 4 Icons\Aspirations\Painter Extraordinaire.png">Painter Extraordinaire</option>
+          <option data-img-src="assets\Sims 4 Icons\Aspirations\Musical Genius.png" value="assets\Sims 4 Icons\Aspirations\Musical Genius.png">Musical Genius</option>
+          <option data-img-src="assets\Sims 4 Icons\Aspirations\Bestselling Author.png" value="assets\Sims 4 Icons\Aspirations\Bestselling Author.png">Bestselling Author</option>
+
+          <option data-img-src="assets\Sims 4 Icons\Aspirations\Public Enemy.png" value="assets\Sims 4 Icons\Aspirations\Public Enemy.png">Public Enemy</option>
+          <option data-img-src="assets\Sims 4 Icons\Aspirations\Chief of Mischief.png" value="assets\Sims 4 Icons\Aspirations\Chief of Mischief.png">Chief of Mischief</option>
+
+          <option data-img-src="assets\Sims 4 Icons\Aspirations\Successful Lineage.png" value="assets\Sims 4 Icons\Aspirations\Successful Lineage.png">Successful Lineage</option>
+          <option data-img-src="assets\Sims 4 Icons\Aspirations\Big Happy Family.png" value="assets\Sims 4 Icons\Aspirations\Big Happy Family.png">Big Happy Family</option>
+
+          <option data-img-src="assets\Sims 4 Icons\Aspirations\Master Chef.png" value="assets\Sims 4 Icons\Aspirations\Master Chef.png">Master Chef</option>
+          <option data-img-src="assets\Sims 4 Icons\Aspirations\Master Mixologist.png" value="assets\Sims 4 Icons\Aspirations\Master Mixologist.png">Master Mixologist</option>
+          
+          <option data-img-src="assets\Sims 4 Icons\Aspirations\Fabulously Wealthy.png" value="assets\Sims 4 Icons\Aspirations\Fabulously Wealthy.png">Fabulously Wealthy</option>
+          <option data-img-src="assets\Sims 4 Icons\Aspirations\Mansion Baron.png" value="assets\Sims 4 Icons\Aspirations\Mansion Baron.png">Mansion Baron</option>
+          
+          <option data-img-src="assets\Sims 4 Icons\Aspirations\Renaissance Sim.png" value="assets\Sims 4 Icons\Aspirations\Renaissance Sim.png">Renaissance Sim</option>
+          <option data-img-src="assets\Sims 4 Icons\Aspirations\Nerd Brain.png" value="assets\Sims 4 Icons\Aspirations\Nerd Brain.png">Nerd Brain</option>
+          <option data-img-src="assets\Sims 4 Icons\Aspirations\Computer Whiz.png" value="assets\Sims 4 Icons\Aspirations\Computer Whiz.png">Computer Whiz</option>
+
+          <option data-img-src="assets\Sims 4 Icons\Aspirations\Serial Romantic.png" value="assets\Sims 4 Icons\Aspirations\Serial Romantic.png">Serial Romantic</option>
+          <option data-img-src="assets\Sims 4 Icons\Aspirations\Soulmate.png" value="assets\Sims 4 Icons\Aspirations\Soulmate.png">Soulmate</option>
+
+          <option data-img-src="assets\Sims 4 Icons\Aspirations\Freelance Botanist.png" value="assets\Sims 4 Icons\Aspirations\Freelance Botanist.png">Freelance Botanist</option>
+          <option data-img-src="assets\Sims 4 Icons\Aspirations\The Curator.png" value="assets\Sims 4 Icons\Aspirations\The Curator.png">The Curator</option>
+          <option data-img-src="assets\Sims 4 Icons\Aspirations\Angling Ace.png" value="assets\Sims 4 Icons\Aspirations\Angling Ace.png">Angling Ace</option>
+          <option data-img-src="assets\Sims 4 Icons\Aspirations\Outdoor Enthusiast.png" value="assets\Sims 4 Icons\Aspirations\Outdoor Enthusiast.png">Outdoor Enthusiast</option>
+           
+          <option data-img-src="assets\Sims 4 Icons\Aspirations\Joke Star.png" value="assets\Sims 4 Icons\Aspirations\Joke Star.png">Joke Star</option>
+          <option data-img-src="assets\Sims 4 Icons\Aspirations\Friend of the World.png" value="assets\Sims 4 Icons\Aspirations\Friend of the World.png">Friend of the World</option>  
+          <option data-img-src="assets\Sims 4 Icons\Aspirations\Leader of the Pack.png" value="assets\Sims 4 Icons\Aspirations\Leader of the Pack.png">Leader of the Pack</option>
+          <option data-img-src="assets\Sims 4 Icons\Aspirations\Party Animal.png" value="assets\Sims 4 Icons\Aspirations\Party Animal.png">Party Animal</option>
+
+          <option data-img-src="assets\Sims 4 Icons\Aspirations\Artistic Prodigy.png" value="assets\Sims 4 Icons\Aspirations\Artistic Prodigy.png">Artistic Prodigy</option>         
+          <option data-img-src="assets\Sims 4 Icons\Aspirations\Rambunctious Scamp.png" value="assets\Sims 4 Icons\Aspirations\Rambunctious Scamp.png">Rambunctious Scamp</option>      
+          <option data-img-src="assets\Sims 4 Icons\Aspirations\Social Butterfly.png" value="assets\Sims 4 Icons\Aspirations\Social Butterfly.png">Social Butterfly</option> 
+          <option data-img-src="assets\Sims 4 Icons\Aspirations\Whiz Kid.png" value="assets\Sims 4 Icons\Aspirations\Whiz Kid.png">Whiz Kid</option>
+        </select>
+      </div><br>
+
+      <div><h3 class="selectors">Traits</h3>
+        <select id="traits" class="image-picker show-html trait" show-labels data-limit="3" multiple="multiple">
+          <option value=""></option>
+          <option data-img-src="assets\Sims 4 Icons\Traits\High Metabolism.png" value="assets\Sims 4 Icons\Traits\High Metabolism.png">High Metabolism</option>
+          <option data-img-src="assets\Sims 4 Icons\Traits\Muser.png" value="assets\Sims 4 Icons\Traits\Muser.png">Muser</option>
+          <option data-img-src="assets\Sims 4 Icons\Traits\Dastardly.png" value="assets\Sims 4 Icons\Traits\Dastardly.png">Dastardly</option>
+          <option data-img-src="assets\Sims 4 Icons\Traits\Domestic.png" value="assets\Sims 4 Icons\Traits\Domestic.png">Domestic</option>          
+          <option data-img-src="assets\Sims 4 Icons\Traits\Essence of Flavor.png" value="assets\Sims 4 Icons\Traits\Essence of Flavor.png">Essence of Flavor</option>
+          <option data-img-src="assets\Sims 4 Icons\Traits\Business Savvy.png" value="assets\Sims 4 Icons\Traits\Business Savvy.png">Business Savvy</option>
+          <option data-img-src="assets\Sims 4 Icons\Traits\Quick Learner.png" value="assets\Sims 4 Icons\Traits\Quick Learner.png">Quick Learner</option>
+          <option data-img-src="assets\Sims 4 Icons\Traits\Alluring.png" value="assets\Sims 4 Icons\Traits\Alluring.png">Alluring</option>
+          <option data-img-src="assets\Sims 4 Icons\Traits\Collector.png" value="assets\Sims 4 Icons\Traits\Collector.png">Collector</option> 
+          <option data-img-src="assets\Sims 4 Icons\Traits\Gregarious.png" value="assets\Sims 4 Icons\Traits\Gregarious.png">Gregarious</option>
+
+          <option data-img-src="assets\Sims 4 Icons\Traits\Active.png" value="assets\Sims 4 Icons\Traits\Active.png">Active</option>
+          <option data-img-src="assets\Sims 4 Icons\Traits\Ambitious.png" value="assets\Sims 4 Icons\Traits\Ambitious.png">Ambitious</option>
+          <option data-img-src="assets\Sims 4 Icons\Traits\Art Lover.png" value="assets\Sims 4 Icons\Traits\Art Lover.png">Art Lover</option>
+          <option data-img-src="assets\Sims 4 Icons\Traits\Bookworm.png" value="assets\Sims 4 Icons\Traits\Bookworm.png">Bookworm</option>
+          <option data-img-src="assets\Sims 4 Icons\Traits\Bro.png" value="assets\Sims 4 Icons\Traits\Bro.png">Bro</option>
+          <option data-img-src="assets\Sims 4 Icons\Traits\Cheerful.png" value="assets\Sims 4 Icons\Traits\Cheerful.png">Cheerful</option>
+          <option data-img-src="assets\Sims 4 Icons\Traits\Childish.png" value="assets\Sims 4 Icons\Traits\Childish.png">Childish</option>
+          <option data-img-src="assets\Sims 4 Icons\Traits\Clumsy.png" value="assets\Sims 4 Icons\Traits\Clumsy.png">Clumsy</option>
+          <option data-img-src="assets\Sims 4 Icons\Traits\Creative.png" value="assets\Sims 4 Icons\Traits\Creative.png">Creative</option>
+          <option data-img-src="assets\Sims 4 Icons\Traits\Evil.png" value="assets\Sims 4 Icons\Traits\Evil.png">Evil</option>
+          <option data-img-src="assets\Sims 4 Icons\Traits\Family-Oriented.png" value="assets\Sims 4 Icons\Traits\Family-Oriented.png">Family-Oriented</option>
+          <option data-img-src="assets\Sims 4 Icons\Traits\Foodie.png" value="assets\Sims 4 Icons\Traits\Foodie.png">Foodie</option>
+          <option data-img-src="assets\Sims 4 Icons\Traits\Geek.png" value="assets\Sims 4 Icons\Traits\Geek.png">Geek</option>
+          <option data-img-src="assets\Sims 4 Icons\Traits\Genius.png" value="assets\Sims 4 Icons\Traits\Genius.png">Genius</option>
+          <option data-img-src="assets\Sims 4 Icons\Traits\Gloomy.png" value="assets\Sims 4 Icons\Traits\Gloomy.png">Gloomy</option>
+          <option data-img-src="assets\Sims 4 Icons\Traits\Glutton.png" value="assets\Sims 4 Icons\Traits\Glutton.png">Glutton</option>
+          <option data-img-src="assets\Sims 4 Icons\Traits\Goofball.png" value="assets\Sims 4 Icons\Traits\Goofball.png">Goofball</option>
+          <option data-img-src="assets\Sims 4 Icons\Traits\Hates Children.png" value="assets\Sims 4 Icons\Traits\Hates Children.png">Hates Children</option>
+          <option data-img-src="assets\Sims 4 Icons\Traits\Hot-Headed.png" value="assets\Sims 4 Icons\Traits\Hot-Headed.png">Hot-Headed</option>
+          <option data-img-src="assets\Sims 4 Icons\Traits\Insane.png" value="assets\Sims 4 Icons\Traits\Insane.png">Insane</option>
+          <option data-img-src="assets\Sims 4 Icons\Traits\Lazy.png" value="assets\Sims 4 Icons\Traits\Lazy.png">Lazy</option>
+          <option data-img-src="assets\Sims 4 Icons\Traits\Loner.png" value="assets\Sims 4 Icons\Traits\Loner.png">Loner</option>
+          <option data-img-src="assets\Sims 4 Icons\Traits\Loves Outdoors.png" value="assets\Sims 4 Icons\Traits\Loves Outdoors.png">Loves Outdoors</option>
+          <option data-img-src="assets\Sims 4 Icons\Traits\Materialistic.png" value="assets\Sims 4 Icons\Traits\Materialistic.png">Materialistic</option>
+          <option data-img-src="assets\Sims 4 Icons\Traits\Mean.png" value="assets\Sims 4 Icons\Traits\Mean.png">Mean</option>
+          <option data-img-src="assets\Sims 4 Icons\Traits\Music Lover.png" value="assets\Sims 4 Icons\Traits\Music Lover.png">Music Lover</option>
+          <option data-img-src="assets\Sims 4 Icons\Traits\Neat.png" value="assets\Sims 4 Icons\Traits\Neat.png">Neat</option>
+          <option data-img-src="assets\Sims 4 Icons\Traits\Noncommittal.png" value="assets\Sims 4 Icons\Traits\Noncommittal.png">Noncommittal</option>
+          <option data-img-src="assets\Sims 4 Icons\Traits\Outgoing.png" value="assets\Sims 4 Icons\Traits\Outgoing.png">Outgoing</option>
+          <option data-img-src="assets\Sims 4 Icons\Traits\Perfectionist.png" value="assets\Sims 4 Icons\Traits\Perfectionist.png">Perfectionist</option>
+          <option data-img-src="assets\Sims 4 Icons\Traits\Romantic.png" value="assets\Sims 4 Icons\Traits\Romantic.png">Romantic</option>
+          <option data-img-src="assets\Sims 4 Icons\Traits\Self-Assured.png" value="assets\Sims 4 Icons\Traits\Self-Assured.png">Self-Assured</option>
+          <option data-img-src="assets\Sims 4 Icons\Traits\Snob.png" value="assets\Sims 4 Icons\Traits\Snob.png">Snob</option>
+          <option data-img-src="assets\Sims 4 Icons\Traits\Squeamish.png" value="assets\Sims 4 Icons\Traits\Squeamish.png">Squeamish</option>
+        </select>
+      </div><br>
+
+      <div><h3 class="selectors">Portrait</h3><input type="file" id="portrait" size="50"></div><br>
+      <div><h3 class="selectors">Job</h3>
+      <input id="node-job" value="Unemployed" placeholder="Job"/></div><br><br>
+
+      <input type="button" value="save" id="saveButton" />
+      <input type="button" value="cancel" id="cancelButton" />
+
+    </div>  
+  </div><!--Sidebar-->
+
+      <input id="edge-id" value="Id" style="display: none;" /><br>
+      <input id="edge-title" value="Relationship" style="
+          position: absolute;
+          z-index: 100;
+          left: 52%;
+          top: 142px;
+          display: none;
+      "/>
+
+  <br />
+  <div id="mynetwork"></div>
+  <div id="save">
+    <input type="button" id="export_button" onclick="exportNetwork()" value="Save"></input>g
+    <input type="button" id="import_button" onclick="importNetwork('file:///C:/Users/Ziwei/Downloads/Sims_data.txt')" value="Load"></input>
+    <textarea class=input_output id="nodeData"></textarea>
+    <textarea class=input_output id="edgeData"></textarea>
+    <!--<input type="button" id="destroy_button" onclick="destroyNetwork()" value="destroy"></input>-->
+  </div>
+
+</body>
+
+<script>
+  $("select").imagepicker()
+
+</script>
+
+</html>
