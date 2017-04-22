@@ -204,9 +204,8 @@ function clearOutputArea() {
         exportEArea.value = "";
     }
 
-function setEdge(edgeType){
-    var query = document.getElementById("node-searchData").value;
-    query = query.toLowerCase();
+function setEdge(){
+    console.log("set relationship")
 }
 
 function searchData(){
@@ -218,15 +217,19 @@ function searchData(){
     
     //get new query and search
     var query = document.getElementById("node-searchData").value;
+    query = query.toLowerCase();
 
     //search by name or trait
     var results = nodesData.get({
         filter: function (item) {
             var name = item.label.toLowerCase();
             var traits = item.title.toLowerCase();
+            console.log("name", name, query)
             if(name.includes(query)){
                 return (item);
-            }else if(traits.includes(query)){
+            }
+             console.log("traits", traits, query)
+            if(traits.includes(query)){
                 return (item);
             }
             
@@ -264,7 +267,7 @@ function displayResults(results){
         container.appendChild(img);
         img.setAttribute("style", "height: 60px;"); // added line
         container.appendChild(data);
-        data.setAttribute("style", "left: 60px; position: absolute;");
+        data.setAttribute("style", "left: 65px; position: absolute;");
         container.setAttribute("id", "resultItemContainer"); // added line
         resultsItem.appendChild(container);
 
@@ -320,7 +323,7 @@ function getFamily(fam){
     case "Rutherford":
         famColour = space;
         break;
-    case "Spirited":
+    case "Cohen":
         famColour = swamp;
         break;
     case "St John":

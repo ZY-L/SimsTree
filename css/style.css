@@ -136,7 +136,7 @@ input::-webkit-calendar-picker-indicator {
 }
 
 .popup p{
-    font-size: 1em;
+    font-size: .8em;
     margin: 0px;
     text-align: center;
 }
