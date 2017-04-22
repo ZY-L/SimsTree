@@ -23,14 +23,12 @@
 </head>
 
 <body onload="init();">
-  <img src="assets\SimTree.png" style="height: 120px; margin-left: auto;margin-right: auto;display: block;">
+  <img src="assets\SimTree.png" style="height: 70px; left: 1%;">
 
 
 
   <div class = "sidebar" id="search">
-    <span class="searchHeading center">Search</span><br>
-
-    
+    <span class="searchHeading operation">Search</span><br>
     <form action="javascript:searchData();" style="width: 0px">
       <span class="input">
         <input id="node-searchData" type="search" list="searchTraits" value="" class="input__field" style="width: 90%"/>
@@ -90,7 +88,7 @@
   </div>
 
   <div class="sidebar">
-      <span class="center" id="operation">Add Sim</span><br>
+      <span id="operation">Add Sim</span><br>
       <input id="node-id" value="Id" style="display: none;" />
         
        <span class="input shorter">
@@ -222,7 +220,7 @@
         </select>
       </div><br>
 
-      <div class="center">
+      <div class="">
       <input type="file" name="portrait[]" id="portrait" class="inputfile inputPortrait center"/>
 			<label for="portrait">
       <svg xmlns="http://www.w3.org/2000/svg" width="20" height="17" viewBox="0 0 20 17">

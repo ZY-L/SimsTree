@@ -4,7 +4,7 @@
     position: absolute;
     z-index: 1;
     display: inline-block;
-    margin: 2px;
+    margin: 0px;
     padding-left: 1em;
     width: 78%;
     overflow: hidden;
@@ -91,6 +91,7 @@
 
 .shorter{
     width: 65%;
+    margin-top: 8px;
 }
 
 /*FILE CSS*/
@@ -105,13 +106,13 @@
 }
 
 .inputfile + label {
-    max-width: 80%;
+    max-width: 8\50%;
     text-overflow: ellipsis;
     white-space: nowrap;
     cursor: pointer;
     display: inline-block;
     overflow: hidden;
-    padding: 0.625rem 1.25rem;
+    padding: 0.625rem .7rem;
     /* 10px 20px */
 }
 
@@ -151,8 +152,7 @@
 .button {
 	float: left;
 	display: block;
-	margin: 5px;
-	padding: 1em 1em;
+	margin: 2px;
 	border: none;
 	background: none;
 	color: inherit;
@@ -235,6 +235,14 @@
 	transform: translate3d(0, 0, 0);
 }
 
+#saveButton{
+    padding: .8em .8em;   
+}
+
+#cancelButton{
+    padding: .8em .9em;   
+}
+
 /*RADIO BOXES*/
 .control-group {
     width: 80px;
@@ -242,8 +250,8 @@
     text-align: left;
     vertical-align: top;
     position: absolute;
-    top: 8%;
-    left: 75%;
+    top: 5.6%;
+    left: 76%;
 }
 
 .control {

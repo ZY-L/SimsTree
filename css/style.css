@@ -5,10 +5,10 @@ body, select {
 }
 #mynetwork {
     position: absolute;
-    top: 135px;
+    top: 82px;
     left: 2%;
     width: 70%;
-    height: 85%;
+    height: 88%;
     border: 1px solid darkcyan;
 }
 table.legend_table {
@@ -32,11 +32,11 @@ div.table_description {
 }
 
 #operation {
-    font-size: 2em;
+    font-size: 1em;
 }
 
 .searchHeading{
-    font-size: 2em;
+    font-size: 1em;
 }
 
 #results{
@@ -73,9 +73,10 @@ div.table_description {
 
 .selectors{
     display: block;
-    font-size: 1em;
+    font-size: .9em;
     font-weight: normal;
     margin: 0px;
+    margin-top: 10px;
 }
 
 .sidebar{
@@ -84,12 +85,13 @@ div.table_description {
     border-style: solid;
     border-width: 1px;
     border-color: darkcyan;
-    top: 135px;
-    left: 73%;
+    top: 82px;
+    left: 72.5%;
     z-index: 200;
-    width: 23.5%;
-    height: 82.9%;
+    width: 24%;
+    height: 85.2%;
     padding: 10px;
+    padding-left: 1.8%
     display: block;
 }
 
@@ -107,9 +109,9 @@ input::-webkit-calendar-picker-indicator {
 }
 
 #complete{
-    left: 55%;
+    left: 60%;
     position: absolute;
-    top: 91%;
+    top: 89.5%;
 }
 
 /*Tooltip*/
@@ -135,8 +137,8 @@ input::-webkit-calendar-picker-indicator {
 
 #save{
     position: absolute;
-    top: 70px;
-    left: 84%;
+    top: 30px;
+    left: 86%;
 }
 
 #config {
