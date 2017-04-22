@@ -193,7 +193,11 @@ function getNodeData(data) {
 
     //ADD ATTRIBUTES HERE FOR LOADING NEW ELEMENT ATTRIBUTES
     data.forEach(function(elem, index, array) {
-        networkNodes.push({id: elem.id, label: elem.label, x: elem.x, y: elem.y, title: elem.title, shape: elem.shape, image: elem.image, color: elem.color});
+        networkNodes.push({id: elem.id, label: elem.label,
+                           x: elem.x, y: elem.y, 
+                           title: elem.title, shape: elem.shape,
+                           image: elem.image, color: elem.color,
+                            });
         updateIds("add", elem.id);
     });
 

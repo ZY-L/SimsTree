@@ -105,8 +105,10 @@ function updateIds(action, id){
     ids += [id]
 }
 
+/*SAVE THE SIM YOU'VE CREATED*/
 function saveData(data,callback,change) {
 
+    //Set ID
     if(change == "add"){
         if(ids.length != 0){
             var id = parseInt(ids[ids.length -1]) + 1
@@ -115,6 +117,14 @@ function saveData(data,callback,change) {
         ids += [parseInt(data.id)];
     }
 
+    //Set Sim name
+    var fullName = document.getElementById('node-label').value;
+    var simName = fullName.substr(0, fullName.indexOf(' ')); 
+    var famName = fullName.substr(fullName.indexOf(' ')+1); 
+    
+    data.label = simName;
+
+    //Set Sim Gender
     var circleColour = "#73ABC2"
     var aspiration = ""
     var traits = ""
@@ -126,8 +136,10 @@ function saveData(data,callback,change) {
         circleColour = "#C1C1C1"
     }
 
-    getFamily(document.getElementById("node-family").value)
+    //Set Fam colours
+    getFamily(famName)
 
+    //Set Details Box
     aspSelect = document.getElementById("aspiration")
     aspiration = getSelectedOptions(aspSelect);
 
@@ -136,35 +148,41 @@ function saveData(data,callback,change) {
 
     var job = document.getElementById("node-job").value;
 
-    console.log("traits", traits)
-
     if(traits.length == 1){
-    details = "<div class='popup'><img id='asp' src='" + aspiration[0].value + 
+    details = "<div class='popup'><p style='display: none;'>" + famName + "</p><img id='asp' src='" + aspiration[0].value + 
                 "'><img src='" + traits[0].value + 
                 "'><br><p>" + job + "</p></div>"
     }
 
     if(traits.length == 2){
-    details = "<div class='popup'><img id='asp' src='" + aspiration[0].value + 
+    details = "<div class='popup'><p style='display: none;'>" + famName + "</p><img id='asp' src='" + aspiration[0].value + 
                 "'><img src='" + traits[0].value + 
                 "'><img src='" + traits[1].value + 
                 "'><br><p>" + job + "</p></div>"
     }
 
     if(traits.length == 3){
-        details = "<div class='popup'><img id='asp' src='" + aspiration[0].value + 
+        details = "<div class='popup'><p style='display: none;'>" + famName + "</p><img id='asp' src='" + aspiration[0].value + 
                     "'><img src='" + traits[0].value + 
                     "'><img src='" + traits[1].value + 
                     "'><img src='" + traits[2].value + 
                     "'><br><p>" + job + "</p></div>"
         console.log(details)
     }
+
+    if(traits.length == 4){
+        details = "<div class='popup'><p style='display: none;'>" + famName + "</p><img id='asp' src='" + aspiration[0].value + 
+                    "'><img src='" + traits[0].value + 
+                    "'><img src='" + traits[1].value + 
+                    "'><img src='" + traits[2].value + 
+                    "'><img src='" + traits[3].value + 
+                    "'><br><p>" + job + "</p></div>"
+        console.log(details)
+    }
     portrait = document.getElementById("portrait").files[0].name;
 
-    data.label = document.getElementById('node-label').value;
     data.image = "assets/Sims/" + portrait
 
-    
     data.title = details;
 
     data.color = {background: circleColour , border: famColour }
@@ -223,7 +241,11 @@ function displayResults(results){
         var img = document.createElement("img");
         var data = document.createElement("div");
 
-        name.innerHTML = results[i].label
+        //Extract Last name from details
+        var end = results[i].title.indexOf('</p><img'); 
+        var famName = results[i].title.substring(45, end);  
+
+        name.innerHTML = results[i].label + " <i>" + famName + "</i>"
         img.src = results[i].image;
         data.innerHTML = results[i].title;
 
@@ -233,7 +255,7 @@ function displayResults(results){
         container.appendChild(img);
         img.setAttribute("style", "height: 60px;"); // added line
         container.appendChild(data);
-        data.setAttribute("style", "left: 40%; position: absolute;");
+        data.setAttribute("style", "left: 60px; position: absolute;");
         container.setAttribute("id", "resultItemContainer"); // added line
         resultsItem.appendChild(container);
 

@@ -266,7 +266,7 @@ div.vis-tooltip {
     visibility: hidden;
     padding: 5px;
     white-space: nowrap;
-    font-family: 'Lato', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-size: 14px;
     color: #000;
     background-color: #b2d942;
@@ -464,7 +464,7 @@ div.vis-network div.vis-close:hover {
 div.vis-network div.vis-edit-mode div.vis-button,
 div.vis-network div.vis-manipulation div.vis-button {
     float: left;
-    font-family: 'Lato', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-size: 12px;
     -moz-border-radius: 15px;
     border-radius: 15px;

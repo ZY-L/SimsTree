@@ -40,17 +40,19 @@ div.table_description {
 }
 
 #results{
+    position: relative;
+    top: 5%;
     margin: auto;
-    width: 300px;
+    width: 100%;
     padding: 0px;
     text-align: center;
 }
 
 #resultItem{
-    width: 300px;
+    width: 100%;
     margin-bottom: 10px;
     list-style: none;
-    background: #EDEDED;
+    background: white;
     border-radius: 5px;
 }
 
@@ -65,7 +67,7 @@ div.table_description {
     width: 215px;
     list-style: none;
     display: flex;
-    background: #EDEDED;
+    background: white;
     border-radius: 5px;
 }
 
@@ -91,6 +93,11 @@ div.table_description {
     display: block;
 }
 
+.center{
+    text-align: center;
+    display: block;
+}
+
 #search{
     z-index: 300;
 }
@@ -99,10 +106,15 @@ input::-webkit-calendar-picker-indicator {
   display: none; /*remove dropdown arrow on search*/
 }
 
+#complete{
+    left: 55%;
+    position: absolute;
+    top: 91%;
+}
+
 /*Tooltip*/
 
-.popup{
-    width: 135px;   
+.popup{ 
     padding: 5px;
     border-radius: 5px;
 }
@@ -123,8 +135,8 @@ input::-webkit-calendar-picker-indicator {
 
 #save{
     position: absolute;
-    top: 100px;
-    left: 73%;
+    top: 70px;
+    left: 84%;
 }
 
 #config {
