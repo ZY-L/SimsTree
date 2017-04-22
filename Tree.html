@@ -15,6 +15,8 @@
   <link href="css/style.css" rel="stylesheet" type="text/css" />
   <link href="css/vis.css" rel="stylesheet" type="text/css" />
   <link href="css/imagePicker.css" rel="stylesheet" type="text/css" />
+  <link href="css/input.css" rel="stylesheet" type="text/css" />
+  <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.2.0/css/font-awesome.min.css" />
   <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
 
@@ -22,10 +24,15 @@
 
 <body onload="init();">
   <img src="assets\SimTree.png" style="height: 120px; margin-left: auto;margin-right: auto;display: block;">
-  <div id="search">
+
+
+
+  <div class = "sidebar" id="search">
     <span class="searchHeading">Search</span><br>
-    <form action="javascript:searchData();">
-      <input id="node-searchData" type="search" list="searchTraits" value="" placeholder="Sim Name or Trait" />
+
+    <form action="javascript:searchData();" style="width: 0px">
+      <span class="input">
+        <input id="node-searchData" type="search" list="searchTraits" value="" class="input__field" style="width: 90%"/>
         <datalist id="searchTraits">
           <option value="Active">
           <option value="Alluring">
@@ -72,17 +79,34 @@
           <option value="Snob">          
           <option value="Squeamish">                      
         </datalist>
+        <label class="input__label" for="node-searchData">
+              <i class="fa fa-fw fa-search icon"></i>
+              <span class="input__label-content">Sim Name or Trait</span>
+            </label>
+		  </span>
     </form><br>
     <ul id="results"></ul>
   </div>
-  <div class="sidebar">
-    
-    <div id="network-popUp">
-      <span id="operation">Add Sim</span> <br>
 
+  <div class="sidebar">
+      <span id="operation">Add Sim</span> <br>
       <input id="node-id" value="Id" style="display: none;" /><br>
-      <input id="node-label" value="Name" /><br>
-      <input id="node-family" value="Family" /><br><br>
+
+       <span class="input shorter">
+        <input id="node-label" value="" class="input__field"/>
+        <label class="input__label" for="node-label">
+              <i class="fa fa-fw fa-search icon"></i>
+              <span class="input__label-content">Sim Name</span>
+            </label>
+		  </span><br><br>
+
+      <span class="input shorter">
+        <input id="node-family" value="" class="input__field"/>
+        <label class="input__label" for="node-family">
+              <i class="fa fa-fw fa-search icon"></i>
+              <span class="input__label-content">Family</span>
+            </label>
+		  </span><br><br><br>
 
       <input id="node-male" type="radio" name="gender" value="m">M</input>
       <input id="node-female" type="radio" name="gender" value="f">F</input>
@@ -187,13 +211,19 @@
       </div><br>
 
       <div><h3 class="selectors">Portrait</h3><input type="file" id="portrait" size="50"></div><br>
-      <div><h3 class="selectors">Job</h3>
-      <input id="node-job" value="Unemployed" placeholder="Job"/></div><br><br>
+
+      <span class="input">
+        <input id="node-job" value="" class="input__field"/>
+        <label class="input__label" for="node-job">
+              <i class="fa fa-fw fa-search icon"></i>
+              <span class="input__label-content">Work</span>
+            </label>
+		  </span><br><br><br>
+
 
       <input type="button" value="save" id="saveButton" />
       <input type="button" value="cancel" id="cancelButton" />
-
-    </div>  
+ 
   </div><!--Sidebar-->
 
       <input id="edge-id" value="Id" style="display: none;" /><br>
@@ -205,10 +235,10 @@
           display: none;
       "/>
 
-  <br />
+  </br>
   <div id="mynetwork"></div>
   <div id="save">
-    <input type="button" id="export_button" onclick="exportNetwork()" value="Save"></input>g
+    <input type="button" id="export_button" onclick="exportNetwork()" value="Save"></input>
     <input type="button" id="import_button" onclick="importNetwork('file:///C:/Users/Ziwei/Downloads/Sims_data.txt')" value="Load"></input>
     <textarea class=input_output id="nodeData"></textarea>
     <textarea class=input_output id="edgeData"></textarea>
@@ -219,7 +249,39 @@
 
 <script>
   $("select").imagepicker()
-
 </script>
+<script src="js/classie.js"></script>
+		<script>
+			(function() {
+				if (!String.prototype.trim) {
+					(function() {
+						var rtrim = /^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g;
+						String.prototype.trim = function() {
+							return this.replace(rtrim, '');
+						};
+					})();
+				}
+
+				[].slice.call( document.querySelectorAll( 'input.input__field' ) ).forEach( function( inputEl ) {
+					if( inputEl.value.trim() !== '' ) {
+						classie.add( inputEl.parentNode, 'input--filled' );
+					}
+
+					// events:
+					inputEl.addEventListener( 'focus', onInputFocus );
+					inputEl.addEventListener( 'blur', onInputBlur );
+				} );
+
+				function onInputFocus( ev ) {
+					classie.add( ev.target.parentNode, 'input--filled' );
+				}
+
+				function onInputBlur( ev ) {
+					if( ev.target.value.trim() === '' ) {
+						classie.remove( ev.target.parentNode, 'input--filled' );
+					}
+				}
+			})();
+		</script>
 
 </html>

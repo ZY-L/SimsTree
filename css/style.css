@@ -78,7 +78,7 @@ div.table_description {
 
 .sidebar{
     position: absolute;
-    background-color: #B7AD99;
+    background-color: #EDEDED;
     border-style: solid;
     border-width: 1px;
     border-color: darkcyan;
@@ -88,32 +88,19 @@ div.table_description {
     width: 23.5%;
     height: 82.9%;
     padding: 10px;
-    text-align: center;
+    display: block;
 }
 
 #search{
-    position: absolute;
-    background-color: #B7AD99;
-    border-style: solid;
-    border-width: 1px;
-    border-color: darkcyan;
-    top: 135px;
-    left: 73%;
     z-index: 300;
-    width: 23.5%;
-    height: 82.9%;
-    padding: 10px;
-    display: block;
 }
 
 input::-webkit-calendar-picker-indicator {
   display: none; /*remove dropdown arrow on search*/
 }
 
-#network-popUp {
-    display: block;
+/*Tooltip*/
 
-}
 .popup{
     width: 135px;   
     padding: 5px;
@@ -136,7 +123,7 @@ input::-webkit-calendar-picker-indicator {
 
 #save{
     position: absolute;
-    top: 90px;
+    top: 100px;
     left: 73%;
 }
 

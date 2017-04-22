@@ -40,7 +40,7 @@ function draw() {
     manipulation: {
         
         addNode: function (data, callback) {
-        data.label = "Name"
+        data.label = ""
         data.title = ""
         data.shape = "circularImage"
         data.image = ""
