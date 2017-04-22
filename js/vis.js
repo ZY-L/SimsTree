@@ -33362,6 +33362,9 @@ return /******/ (function(modules) { // webpackBootstrap
     return this.manipulation.addEdgeMode.apply(this.manipulation, arguments);
   };
   Network.prototype.editEdgeMode = function () {
+    console.log("clicked edit Edge!")
+  document.getElementById('edgePanel').zIndex = '301';
+  document.getElementById('searchPanel').zIndex = '250';
     return this.manipulation.editEdgeMode.apply(this.manipulation, arguments);
   };
   Network.prototype.deleteSelected = function () {
@@ -49012,8 +49015,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
         this.inMode = 'addEdge';
         if (this.guiEnabled === true) {
-          
-          document.getElementById('edge-title').style.display = 'block';
+
+          console.log("clicked add Edge!")
+          document.getElementById('edgePanel').style.display = 'block';
+          document.getElementById('searchPanel').style.display = 'none';
 
           var locale = this.options.locales[this.options.locale];
           this.manipulationDOM = {};
@@ -49060,6 +49065,11 @@ return /******/ (function(modules) { // webpackBootstrap
           }
         }
         if (this.guiEnabled === true) {
+
+          console.log("clicked edit Edge!")
+          document.getElementById('edgePanel').style.display = 'block';
+          document.getElementById('searchPanel').style.display = 'none';
+
           var locale = this.options.locales[this.options.locale];
           this.manipulationDOM = {};
           this._createBackButton(locale);
@@ -49072,8 +49082,6 @@ return /******/ (function(modules) { // webpackBootstrap
 
         this.edgeBeingEditedId = this.selectionHandler.getSelectedEdges()[0];
         if (this.edgeBeingEditedId !== undefined) {
-
-          document.getElementById('edge-title').style.display = 'block';
 
           var _edge = this.body.edges[this.edgeBeingEditedId];
 

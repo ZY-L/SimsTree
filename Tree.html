@@ -25,10 +25,8 @@
 <body onload="init();">
   <img src="assets\SimTree.png" style="height: 70px; left: 1%;">
 
-
-
-  <div class = "sidebar" id="search">
-    <span class="searchHeading operation">Search</span><br>
+  <div class = "sidebar" id="searchPanel">
+    <span class="searchHeading">Search</span><br>
     <form action="javascript:searchData();" style="width: 0px">
       <span class="input">
         <input id="node-searchData" type="search" list="searchTraits" value="" class="input__field" style="width: 90%"/>
@@ -87,7 +85,23 @@
     <ul id="results"></ul>
   </div>
 
-  <div class="sidebar">
+  <div class = "sidebar" id="edgePanel">
+    <span class="edgeHeading">Sim Relationship</span><br>
+    <form action="javascript:setEdge();" style="width: 0px">
+      <span class="input">
+        <input id="edgeTypes" type="search" list="edgeTypes" value="" class="input__field" style="width: 90%"/>
+        <datalist id="edgeTypes">
+          <option value="Spouse">                    
+        </datalist>
+        <label class="input__label" for="edge-type">
+              <i class="fa fa-fw fa-users icon"></i>
+              <span class="input__label-content">Type</span>
+            </label>
+		  </span>
+    </form><br>
+  </div>
+
+  <div class="sidebar" id="simPanel">
       <span id="operation">Add Sim</span><br>
       <input id="node-id" value="Id" style="display: none;" />
         
@@ -232,15 +246,6 @@
       <button id="cancelButton" class="button button--ujarak button--inverted button--round-l cancel"><i class="fa fa-times"></i></button>
       </div>
   </div><!--Sidebar-->
-
-      <input id="edge-id" value="Id" style="display: none;" /><br>
-      <input id="edge-title" value="Relationship" style="
-          position: absolute;
-          z-index: 100;
-          left: 52%;
-          top: 142px;
-          display: none;
-      "/>
 
   </br>
   <div id="mynetwork"></div>

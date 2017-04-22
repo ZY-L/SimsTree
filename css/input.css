@@ -106,7 +106,7 @@
 }
 
 .inputfile + label {
-    max-width: 8\50%;
+    max-width: 50%;
     text-overflow: ellipsis;
     white-space: nowrap;
     cursor: pointer;

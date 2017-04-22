@@ -52,7 +52,8 @@ function draw() {
         document.getElementById('node-label').value = data.label;
         document.getElementById('saveButton').onclick = saveData.bind(this, data, callback, "add");
         document.getElementById('cancelButton').onclick = clearPopUp.bind();
-        document.getElementById('search').style.display = 'none';
+        document.getElementById('searchPanel').style.display = 'none';
+        document.getElementById('edgePanel').style.display = 'none';
         },
         editNode: function (data, callback) {
         
@@ -60,28 +61,25 @@ function draw() {
         document.getElementById('operation').innerHTML = "Edit Sim";
         document.getElementById('node-id').value = data.id;
         document.getElementById('node-label').value = data.label;
-        //document.getElementById('node-title').value = data.title;
         document.getElementById('saveButton').onclick = saveData.bind(this, data, callback, "edit");
         document.getElementById('cancelButton').onclick = clearPopUp.bind();
-        document.getElementById('search').style.display = 'none';
+        document.getElementById('searchPanel').style.display = 'none';
+        document.getElementById('edgePanel').style.display = 'none';
         
         },
         addEdge: function (data, callback) {
-
-        document.getElementById('edge-title').style.display = 'none'; //close input after editing (show in vis.js)
-        data.title = document.getElementById('edge-title').value;
-        data.color = forest;
+        data.title = document.getElementById('edgeTypes').value;
+        data.color = famColour;
         data.arrow = "to";
-        //data.font = {size: ".8em" };
         callback(data)
+        clearPopUp();
         },
         editEdge: function (data, callback) {
         data.arrow = "to";
-        document.getElementById('edge-title').style.display = 'none'; //close input after editing (show in vis.js)
-        data.title = document.getElementById('edge-title').value;
+        data.title = document.getElementById('edgeTypes').value;
         data.color = famColour;
-
         callback(data)
+        clearPopUp();
         }
     }
 }; 
@@ -89,10 +87,8 @@ function draw() {
 }
 
 function clearPopUp() {
-    //document.getElementById('saveButton').onclick = null;
-    //document.getElementById('cancelButton').onclick = null;
-    document.getElementById('search').style.display = 'block';
-    document.getElementById('edge-title').style.display = 'none';
+    document.getElementById('searchPanel').style.display = 'block';
+    document.getElementById('edgePanel').style.display = 'none';
     
     console.log("data", data)
 }
@@ -208,20 +204,32 @@ function clearOutputArea() {
         exportEArea.value = "";
     }
 
+function setEdge(edgeType){
+    var query = document.getElementById("node-searchData").value;
+    query = query.toLowerCase();
+}
+
 function searchData(){
+    //Clear existing results if any
     var resultsList = document.getElementById("results");
     if(resultsList != null){
         resultsList.innerHTML = "";
     }
-    console.log("nodes", nodesData)
+    
+    //get new query and search
     var query = document.getElementById("node-searchData").value;
 
+    //search by name or trait
     var results = nodesData.get({
         filter: function (item) {
-            if(item.label.includes(query)){
-                return (item.label.includes(query));
+            var name = item.label.toLowerCase();
+            var traits = item.title.toLowerCase();
+            if(name.includes(query)){
+                return (item);
+            }else if(traits.includes(query)){
+                return (item);
             }
-            return (item.title.includes(query));
+            
         }
     });
 
@@ -233,6 +241,7 @@ function displayResults(results){
     console.log(results)
     var resultsList = document.getElementById("results");
     
+    //format returned info box
     for(var i=0; i<results.length; i++){
         var resultsItem = document.createElement("li");
         

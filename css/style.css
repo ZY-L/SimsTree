@@ -37,6 +37,12 @@ div.table_description {
 
 .searchHeading{
     font-size: 1em;
+    display: block;
+}
+
+.edgeHeading{
+    font-size: 1em;
+    display: block;
 }
 
 #results{
@@ -87,7 +93,7 @@ div.table_description {
     border-color: darkcyan;
     top: 82px;
     left: 72.5%;
-    z-index: 200;
+    
     width: 24%;
     height: 85.2%;
     padding: 10px;
@@ -100,8 +106,16 @@ div.table_description {
     display: block;
 }
 
-#search{
+#simPanel{
+    z-index: 200;
+}
+
+#edgePanel{
     z-index: 300;
+}
+
+#searchPanel{
+    z-index: 301;
 }
 
 input::-webkit-calendar-picker-indicator {
@@ -109,9 +123,9 @@ input::-webkit-calendar-picker-indicator {
 }
 
 #complete{
-    left: 60%;
+    left: 65%;
     position: absolute;
-    top: 89.5%;
+    top: 91%;
 }
 
 /*Tooltip*/
