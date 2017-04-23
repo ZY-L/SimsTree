@@ -208,6 +208,10 @@ function setEdge(){
     console.log("set relationship")
 }
 
+function setJob(){
+    console.log("set Job")
+}
+
 function searchData(){
     //Clear existing results if any
     var resultsList = document.getElementById("results");

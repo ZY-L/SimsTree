@@ -89,8 +89,8 @@
     <span class="edgeHeading">Sim Relationship</span><br>
     <form action="javascript:setEdge();" style="width: 0px">
       <span class="input">
-        <input id="edgeTypes" type="search" list="edgeTypes" value="" class="input__field" style="width: 90%"/>
-        <datalist id="edgeTypes">
+        <input id="edgeTypes" type="search" list="edgeTypesList" value="" class="input__field" style="width: 90%"/>
+        <datalist id="edgeTypesList">
           <option value="Spouse">
           <option value="Engaged">
           <option value="Dating">
@@ -120,13 +120,40 @@
             </label>
 		  </span><br><br>
 
+    <form action="javascript:setJob();" style="width: 0px">
       <span class="input shorter">
-        <input id="node-job" value="" class="input__field"/>
+        <input id="node-job" type="search" list="jobList" value="" class="input__field"/>
+        <datalist id="jobList">
+          <option value="Astronaut: ? ">
+          <option value="Athlete: ?">
+          <option value="Business: ?">
+          <option value="Criminal: ?">
+          <option value="Culinary: ?">
+          <option value="Detective: ?">
+          <option value="Doctor: ?">
+          <option value="Entertainer: ?">
+          <option value="Painter: ?">
+          <option value="Scientist">
+          <option value="Secret Agent: ?">
+          <option value="Tech Guru: ?">
+          <option value="Writer: ?">
+          <option value="Babysitter: ?">
+          <option value="Barista: ?">
+          <option value="Fast Food: ?">
+          <option value="Manual Labour: ?">
+          <option value="Retail: ?">
+          <option value="Owner: ">
+          <option value="Restaurateur: ">
+          <option value="Teen">
+          <option value="Child">
+          <option value="Toddler">
+          <option value="Baby">                    
+        </datalist>
         <label class="input__label" for="node-job">
               <i class="fa fa-fw fa-briefcase icon"></i>
               <span class="input__label-content">Work</span>
             </label>
-		  </span><br><br>
+		  </span></form><br><br>
 
          <div class="control-group">
             <label class="control control--checkbox"><i class="fa fa-fw fa-male"></i>
@@ -187,6 +214,8 @@
           <option data-img-src="assets\Sims 4 Icons\Aspirations\Rambunctious Scamp.png" value="assets\Sims 4 Icons\Aspirations\Rambunctious Scamp.png">Rambunctious Scamp</option>      
           <option data-img-src="assets\Sims 4 Icons\Aspirations\Social Butterfly.png" value="assets\Sims 4 Icons\Aspirations\Social Butterfly.png">Social Butterfly</option> 
           <option data-img-src="assets\Sims 4 Icons\Aspirations\Whiz Kid.png" value="assets\Sims 4 Icons\Aspirations\Whiz Kid.png">Whiz Kid</option>
+
+          <option data-img-src="assets\Sims 4 Icons\Aspirations\Grow Up.png" value="assets\Sims 4 Icons\Aspirations\Grow Up.png">Grow Up</option>
         </select>
       </div>
 
