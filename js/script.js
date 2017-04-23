@@ -132,6 +132,20 @@ function saveData(data,callback,change) {
         circleColour = "#C1C1C1"
     }
 
+    var status;
+
+    switch(circleColour){
+        case "#73ABC2":
+            status = "Male";
+            break;
+        case "#FFA0B9":
+            status = "Female";
+            break;
+        case "#C1C1C1":
+            status = "Dead";
+            break;
+    }
+
     //Set Fam colours
     getFamily(famName)
 
@@ -143,6 +157,11 @@ function saveData(data,callback,change) {
     traits = getSelectedOptions(traitSelect);
 
     var job = document.getElementById("node-job").value;
+    
+    if(traits.length == 0){
+    details = "<div class='popup'><p style='display: none;'>" + famName + "</p><img id='asp' src='" + aspiration[0].value + 
+                "'><br><p>" + job + "</p></div>"
+    }
 
     if(traits.length == 1){
     details = "<div class='popup'><p style='display: none;'>" + famName + "</p><img id='asp' src='" + aspiration[0].value + 
@@ -269,9 +288,9 @@ function displayResults(results){
         name.setAttribute("id", "resultName"); // added line
 
         container.appendChild(img);
-        img.setAttribute("style", "height: 60px;"); // added line
+        img.setAttribute("style", "height: 50px;"); // added line
         container.appendChild(data);
-        data.setAttribute("style", "left: 65px; position: absolute;");
+        data.setAttribute("style", "left: 50px; position: absolute;");
         container.setAttribute("id", "resultItemContainer"); // added line
         resultsItem.appendChild(container);
 
